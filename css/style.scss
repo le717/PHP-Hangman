@@ -1,0 +1,205 @@
+// PHP-Hangman
+// Created 2015 Triangle717
+// <http://le717.github.io/>
+// Licensed under The MIT License
+// <http://opensource.org/licenses/MIT/>
+
+
+* { box-sizing: border-box; }
+html { min-width: 320px; }
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: "Open Sans", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: 300; }
+
+header {
+  text-align: center;
+
+  img { margin-bottom: -1.8em; }
+  h1 { margin-bottom: -0.2em; }
+  p { margin: 0.5em 0.4em; }
+}
+
+.hangman {
+  position: relative;
+  float: right;
+  top: -10.5em;
+  right: 23%;
+
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+
+  img {
+    position: absolute;
+    display: none;
+  }
+
+  #gallows { display: block; }
+
+  #head {
+    top: 4.5em;
+    left: -0.5em;
+  }
+
+  #body {
+    top: 8.9em;
+    left: -0.5em;
+  }
+
+  #arm-l {
+    top: 6.5em;
+    left: -2.2em;
+  }
+
+  #arm-r {
+    top: 6.5em;
+    left: 1em;
+  }
+
+  #leg-l {
+    top: 12.6em;
+    left: -2.2em;
+  }
+
+  #leg-r {
+    top: 12.5em;
+    left: 1.15em;
+  }
+}
+
+#area-hint, #area-message {
+  width: 90%;
+  position: relative;
+  left: 5%;
+}
+
+#area-word {
+  text-align: center;
+
+  p {
+    font-size: 3em;
+    letter-spacing: 0.3em;
+    display: inline;
+    position: relative;
+    left: 0.8%;
+  }
+
+  span {
+    position: relative;
+    margin-right: 0.1em;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: -0.1em;
+      bottom: -0.1em;
+      width: 90%;
+      height: 2px;
+      background-color: #000;
+    }
+  }
+}
+
+#area-message {
+  max-width: 10em;
+  max-height: 0;
+  border-radius: 0.375em;
+  background-color: #8A2BE2;
+  color: #fff;
+  font-size: 1.2em;
+  text-align: center;
+  transition: max-height 0.8s ease;
+
+  &.visible { max-height: 5em; }
+}
+
+form {
+  position: relative;
+  top: 3em;
+  text-align: center;
+
+  #guess {
+    width: 2.5em;
+    height: 2.2em;
+    border-radius: 0.375em;
+    border: 1px solid rgba(0, 0, 255, 0.32);
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.05em;
+    text-align: center;
+
+    &:focus { box-shadow: 0 0 2px rgba(0, 0, 255, 0.32); }
+  }
+
+  #submit {
+    position: relative;
+    left: 0.4em;
+    height: 1.7em;
+    background: #8A2BE2 none;
+    border: none;
+    border-radius: 0.375em;
+    color: #fff;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.2em;
+    cursor: pointer;
+
+    &:hover { opacity: 0.9; }
+  }
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  color: #fff;
+  font-size: 0.95em;
+  background-color: #362626;
+  text-align: center;
+
+  div { text-align: center; }
+
+  a {
+    color: #95A6C6;
+    text-decoration: none;
+
+    &:hover { border-bottom: 1px solid #95A6C6; }
+  }
+}
+
+.breaker {
+  &::before { content: " | "; }
+
+  @media only screen and (max-width: 720px) {
+    display: block;
+    &::before { content: initial; }
+  }
+}
+
+// Adapt the footer to smaller screens
+@media only screen and (max-width: 720px) {
+  h2 { font-size: 1.3em; }
+  footer { font-size: 0.9em; }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  header {
+    h1 { font-size: 1.7em; }
+    p {
+      font-size: 0.9em;
+      margin-top: 0.43em;
+    }
+  }
+}
