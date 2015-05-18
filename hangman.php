@@ -1,3 +1,4 @@
+<?php
 /*
  * PHP-Hangman
  * Created 2015 Triangle717
@@ -8,8 +9,8 @@
  */
 
 
-<?php
   session_start();
+
 
   class Hangman {
     private $word, $hint, $guess;
