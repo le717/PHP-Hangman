@@ -50,8 +50,8 @@
   </form>
 
   <footer>
-    <div>Created 2015 Triangle717 <span class="breaker"></span> <a target="_blank" href="https://twitter.com/_le717">@_le717</a>
-    <span class="breaker"></span> <a target="_blank" href="http://le717.github.io/">Triangle Land</a></div>
+    <div>Created 2015 <a target="_blank" href="https://twitter.com/_le717">Caleb Ely</a> <span class="breaker"></span> CIST&nbsp;2351&nbsp;-&nbsp;PHP Programming I
+    <span class="breaker"></span> <a target="_blank" href="http://www.southeasterntech.edu">Southeastern&nbsp;Technical&nbsp;College</a></div>
   </footer>
 
   <script async src="js/microajax.min.js"></script>
