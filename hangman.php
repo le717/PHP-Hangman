@@ -14,9 +14,9 @@
 
   class Hangman {
     private $word, $hint, $guess;
-    private $whiteList        = array('-', ' ');
-    private $correctLetters   = array();
-    private $incorrectLetters = array();
+    private $whiteList        = ['-', ' '];
+    private $correctLetters   = [];
+    private $incorrectLetters = [];
 
     /**
      * @public
@@ -163,7 +163,7 @@
      */
     public function processGuess() {
       // Initialize everything we need
-      $messages = array();
+      $messages = [];
       $wordLower = strtolower($this->word);
       $wordLen = iconv_strlen($this->word);
       $letterOccurence = substr_count($wordLower, $this->guess);
@@ -228,12 +228,12 @@
 
     // Start a new game
     if (isset($_POST['pageLoad'])) {
-      echo json_encode(array(
-        'hint' => $hangMan->getHint(),
-        'word' => $hangMan->displayWordStructure(),
-        'header' => $hangMan->getHeader(),
+      echo json_encode([
+        'hint'    => $hangMan->getHint(),
+        'word'    => $hangMan->displayWordStructure(),
+        'header'  => $hangMan->getHeader(),
         'gallows' => $hangMan->getGallows()
-      ));
+      ]);
 
       // Game is in progress
     } else if (isset($_POST['guess'])) {
