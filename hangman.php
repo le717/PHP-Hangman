@@ -224,25 +224,25 @@
 
   // Only react on POST requests
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $hangMan = new Hangman();
+    $hangman = new Hangman();
 
     // Start a new game
     if (isset($_POST['pageLoad'])) {
       echo json_encode([
-        'hint'    => $hangMan->getHint(),
-        'word'    => $hangMan->displayWordStructure(),
-        'header'  => $hangMan->getHeader(),
-        'gallows' => $hangMan->getGallows()
+        'hint'    => $hangman->getHint(),
+        'word'    => $hangman->displayWordStructure(),
+        'header'  => $hangman->getHeader(),
+        'gallows' => $hangman->getGallows()
       ]);
 
       // Game is in progress
     } else if (isset($_POST['guess'])) {
-      $hangMan->setGuess($_POST['guess']);
-      $result = $hangMan->processGuess();
+      $hangman->setGuess($_POST['guess']);
+      $result = $hangman->processGuess();
 
       // A new game should be started
       if (stristr($result['msg'], 'win') || stristr($result['msg'], 'over')) {
-        $hangMan->newGame();
+        $hangman->newGame();
       }
       echo json_encode($result);
     }
