@@ -99,7 +99,6 @@
       url: "hangman.php",
       data: "pageLoad=true",
       success: function(response) {
-
         // Display the content
         response = JSON.parse(response);
         view.displayHeader(response.header);
@@ -127,7 +126,6 @@
       url: "hangman.php",
       data: "guess=" + QGuessedLetter,
       success: function(response) {
-
         // Update the message and word
         response = JSON.parse(response);
         view.displayWord(response.word);
