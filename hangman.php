@@ -14,9 +14,9 @@
 
   class Hangman {
     private $word, $hint, $guess;
-    private $correctLetters = array();
+    private $whiteList        = array('-', ' ');
+    private $correctLetters   = array();
     private $incorrectLetters = array();
-    private $whiteList = array('-', ' ');
 
     /**
      * @public
@@ -25,7 +25,10 @@
     public function __construct() {
       // The word/hint is not yet generated
       if (isset($_SESSION['clearCache']) || !isset($_SESSION['gameWord'])) {
-        list($this->word, $this->hint) = $this->selectRandomWord();
+        $chosenWord = $this->selectRandomWord();
+        $this->word = $chosenWord['word'];
+        $this->hint = $chosenWord['hint'];
+        unset($chosenWord);
         unset($_SESSION['clearCache']);
 
         // It was generated, restore it
@@ -54,9 +57,9 @@
      * @return array The word and its hint.
      */
     private function selectRandomWord() {
-      $wordList = file('words/words.are.wordy', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+      $wordList = json_decode(file_get_contents('words/word-list.json'), true);
       $number = mt_rand(0, count($wordList) - 1);
-      return explode("|", $wordList[$number]);
+      return $wordList[$number];
     }
 
     /**
